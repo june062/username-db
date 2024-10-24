@@ -1,13 +1,17 @@
 const expressValidator = require("express-validator");
+const dbQueries = require("../db/queries");
 
-exports.usernameListGet = (req, res) => {
-  console.log("usernames will be logged here - wip");
+exports.usernameListGet = async (req, res) => {
+  const usernames = await dbQueries.getAllUsernames();
+  res.send("Usernames: " + usernames.map((user) => user.username).join(", "));
 };
 
-exports.usernameFormGet = (req, res) => {
+exports.usernameFormGet = async (req, res) => {
   res.render("usernameForm");
 };
 
-exports.createUsernamePost = (req, res) => {
-  console.log("username to be saved: ", req.body.username);
+exports.createUsernamePost = async (req, res) => {
+  let username = req.body.username;
+  await dbQueries.insertUsername(username);
+  res.redirect("/");
 };
