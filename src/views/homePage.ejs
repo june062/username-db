@@ -6,7 +6,13 @@
     <title>Home Page</title>
   </head>
   <body>
-    <form action="/" method="get"></form>
+    <form action="/" method="get">
+      <p>
+        <label for="search">Search for a username</label>
+        <input type="text" id="search" name="search" />
+      </p>
+      <button type="submit">Search</button>
+    </form>
     <ul>
       <li>
         <%= "Usernames: " + usernames.map((user) => user.username).join(", ")%>

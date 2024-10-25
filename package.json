@@ -8,7 +8,8 @@
     "start": "webpack serve --open",
     "build": "webpack",
     "push": "git subtree push --prefix dist origin gh-pages",
-    "populate": "node ./src/db/populatedb.js"
+    "populate": "node ./src/db/populatedb.js",
+    "watch": "node --watch ./src/index.js "
   },
   "author": "",
   "license": "ISC",
